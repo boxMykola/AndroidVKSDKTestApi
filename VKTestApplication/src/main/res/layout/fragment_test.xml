@@ -1,0 +1,116 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".TestActivity$PlaceholderFragment">
+
+    <LinearLayout style="@style/Container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/users_get"
+            style="@style/Button"
+            android:text="@string/users_get"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:text="POST.GET"
+            android:layout_width="734dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/posts_get" />
+
+        <Button
+            android:id="@+id/friends_get"
+            style="@style/Button"
+            android:text="@string/friends_get"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/messages_get"
+            style="@style/Button"
+            android:text="@string/messages_get"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/dialogs_get"
+            style="@style/Button"
+            android:text="@string/dialogs_get"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/captcha_force"
+            style="@style/Button"
+            android:text="@string/captcha_force"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <Button
+            android:id="@+id/wall_post"
+            style="@style/Button"
+            android:text="@string/wall_post"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/wall_getById"
+            style="@style/Button"
+            android:text="@string/wall_getById"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/upload_photo"
+            style="@style/Button"
+            android:text="@string/upload_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/upload_photo_to_wall"
+            style="@style/Button"
+            android:text="@string/upload_photo_to_wall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/upload_several_photos_to_wall"
+            style="@style/Button"
+            android:text="@string/upload_several_photos_to_wall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/upload_doc"
+            style="@style/Button"
+            android:text="@string/upload_doc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/test_validation"
+            style="@style/Button"
+            android:text="@string/test_validation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/test_share"
+            style="@style/Button"
+            android:text="@string/test_share"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/test_send_request"
+            style="@style/Button"
+            android:text="@string/test_send_request"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</ScrollView>
