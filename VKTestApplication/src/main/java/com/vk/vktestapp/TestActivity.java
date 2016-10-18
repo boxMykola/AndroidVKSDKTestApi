@@ -28,8 +28,10 @@ import com.vk.sdk.api.VKRequest.VKRequestListener;
 import com.vk.sdk.api.VKResponse;
 import com.vk.sdk.api.methods.VKApiCaptcha;
 import com.vk.sdk.api.model.VKApiPhoto;
+import com.vk.sdk.api.model.VKApiPost;
 import com.vk.sdk.api.model.VKApiUser;
 import com.vk.sdk.api.model.VKAttachments;
+import com.vk.sdk.api.model.VKList;
 import com.vk.sdk.api.model.VKPhotoArray;
 import com.vk.sdk.api.model.VKWallPostResult;
 import com.vk.sdk.api.photo.VKImageParameters;
@@ -38,6 +40,7 @@ import com.vk.sdk.dialogs.VKShareDialog;
 import com.vk.sdk.dialogs.VKShareDialogBuilder;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,12 +50,12 @@ import java.io.OutputStream;
 
 public class TestActivity extends ActionBarActivity {
 
-	private static final int[] IDS = {R.id.users_get, R.id.friends_get, R.id.messages_get, R.id.dialogs_get,
+	private static final int[] IDS = {R.id.users_get,R.id.posts_get, R.id.friends_get, R.id.messages_get, R.id.dialogs_get,
 			R.id.captcha_force, R.id.upload_photo, R.id.wall_post, R.id.wall_getById, R.id.test_validation,
 			R.id.test_share, R.id.upload_photo_to_wall, R.id.upload_doc, R.id.upload_several_photos_to_wall,
 			R.id.test_send_request};
 
-	public static final int TARGET_GROUP = 60479154;
+	public static final int TARGET_GROUP = 99259759;
 	public static final int TARGET_ALBUM = 181808365;
 
 	@Override
@@ -106,13 +109,22 @@ public class TestActivity extends ActionBarActivity {
 					request.secure = false;
 					request.useSystemLanguage = false;
 					startApiCall(request);
+//					VKRequest req = VKApi.users().get(VKParameters.from(VKApiConst.FIELDS, "photo_100"));
+//					req.secure = false;
+//					req.useSystemLanguage = false;
+//
+//
+//					startApiCall(req);
+
 				}
 				break;
 				case R.id.friends_get:
 					startApiCall(VKApi.friends().get(VKParameters.from(VKApiConst.FIELDS, "id,first_name,last_name,sex,bdate,city")));
 					break;
 				case R.id.posts_get:
-					startApiCall(VKApi.wall().get(VKParameters.from(VKApiConst.OWNER_ID, -TARGET_GROUP, VKApiConst.COUNT, 1, VKApiConst.EXTENDED, 1)));
+					startApiCall(VKApi.wall().get(VKParameters.from(VKApiConst.OWNER_ID, -TARGET_GROUP, VKApiConst.COUNT, 54, VKApiConst.EXTENDED, 1)));
+
+					break;
 				case R.id.messages_get:
 					startApiCall(VKApi.messages().get());
 					break;
@@ -237,6 +249,19 @@ public class TestActivity extends ActionBarActivity {
 			i.putExtra("request", request.registerObject());
 			startActivity(i);
 		}
+//		private void startApiCall2(VKRequest request) {
+//			Intent i = new Intent(getActivity(), ApiCallActivity.class);
+//			request.executeWithListener(new VKRequest.VKRequestListener() {
+//				@Override
+//				public void onComplete(VKResponse response) {
+//					super.onComplete(response);
+//					VKApiPost post;
+//					JSONArray s = response.json.getJSONArray("response");
+//					post = new VKApiPost(s.getJSONObject(0));
+//
+//			i.putExtra("request", request.registerObject());
+//			startActivity(i);
+//		}
 
 		private void showError(VKError error) {
 			new AlertDialog.Builder(getActivity())

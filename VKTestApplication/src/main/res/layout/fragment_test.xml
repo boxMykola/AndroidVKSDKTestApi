@@ -17,9 +17,10 @@
 
         <Button
             android:text="POST.GET"
-            android:layout_width="734dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/posts_get" />
+            style="@style/Button"
+            android:id="@+id/posts_get"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/friends_get"

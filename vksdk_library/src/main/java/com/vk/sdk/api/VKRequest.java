@@ -45,6 +45,7 @@ import com.vk.sdk.util.VKUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -631,7 +632,7 @@ public class VKRequest extends VKObject {
          *
          * @param response response from VKRequest
          */
-        public void onComplete(VKResponse response) {
+        public void onComplete(VKResponse response)  {
         }
 
         /**

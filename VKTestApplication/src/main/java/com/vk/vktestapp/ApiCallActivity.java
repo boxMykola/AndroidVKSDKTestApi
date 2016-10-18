@@ -11,10 +11,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.vk.sdk.VKSdk;
+import com.vk.sdk.api.VKApi;
+import com.vk.sdk.api.VKApiConst;
 import com.vk.sdk.api.VKError;
+import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKRequest.VKRequestListener;
 import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.model.VKApiPost;
+import com.vk.sdk.api.model.VKApiUser;
+import com.vk.sdk.api.model.VKList;
+
+import java.io.IOException;
 
 public class ApiCallActivity extends ActionBarActivity {
 
@@ -89,7 +97,42 @@ public class ApiCallActivity extends ActionBarActivity {
 	VKRequestListener mRequestListener = new VKRequestListener() {
 		@Override
 		public void onComplete(VKResponse response) {
-			setResponseText(response.json.toString());
+//			for(int i = 0; i<((VKList<VKApiUser>)response.parsedModel).size(); i++) {
+//				VKApiUser vkApiUser = ((VKList<VKApiUser>) response.parsedModel).get(i);
+//				setResponseText(""+vkApiUser.first_name+"\n"
+//				+vkApiUser.last_name+"\n");
+			final StringBuilder sb = new StringBuilder();
+			for(int i = 0; i<((VKList<VKApiPost>)response.parsedModel).size(); i++) {
+				VKApiPost vkApiPost = ((VKList<VKApiPost>) response.parsedModel).get(i);
+				VKRequest request = VKApi.users().get(VKParameters.from(VKApiConst.USER_ID,vkApiPost.from_id,VKApiConst.FIELDS,
+						"first_name,last_name,sex,city,country"));
+				request.secure = false;
+				request.useSystemLanguage = true;
+
+				request.executeWithListener(new VKRequest.VKRequestListener() {
+												@Override
+												public void onComplete(VKResponse response){
+													super.onComplete(response);
+													for(int i = 0; i<((VKList<VKApiUser>)response.parsedModel).size(); i++) {
+														VKApiUser vkApiUser = ((VKList<VKApiUser>) response.parsedModel).get(i);
+
+														sb.append("====================================\n");
+														sb.append(vkApiUser.first_name);
+														sb.append("\n");
+														sb.append(vkApiUser.);
+														System.out.println(vkApiUser.last_name);
+													}
+												}
+											});
+
+				sb.append(vkApiPost.text);
+				sb.append("\n");
+				sb.append("\n");
+
+
+			}
+			setResponseText(sb.toString());
+			//setResponseText(response.json.toString());
 		}
 
 		@Override
